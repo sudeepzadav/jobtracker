@@ -1,82 +1,82 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const features = [
+  {
+    title: "Track every application",
+    desc: "Keep company, role, date, and notes in one place.",
+  },
+  {
+    title: "Status columns",
+    desc: "Move jobs through Wishlist, Applied, Interview, Offer, and Rejected.",
+  },
+  {
+    title: "Dashboard insights",
+    desc: "See how many applications you sent and where they stand.",
+  },
+];
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export default function Home() {
+const Index = () => {
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black`}
-    >
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-25"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/6 px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/8">
-              index.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+        <span className="text-xl font-bold text-indigo-400">JobTracker</span>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/login"
+            className="text-sm text-slate-300 hover:text-white"
+          >
+            Login
+          </Link>
+          <Link
+            href="/register"
+            className="rounded-lg bg-indigo-500 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-400"
+          >
+            Sign up
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-39.5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </nav>
+
+      <main className="mx-auto max-w-5xl px-6 pb-20 pt-16 text-center">
+        <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl">
+          Organize your{" "}
+          <span className="bg-linear-to-r from-indigo-400 to-cyan-300 bg-clip-text text-transparent">
+            job search
+          </span>
+        </h1>
+        <p className="mx-auto mt-6 max-w-xl text-lg text-slate-400">
+          Add applications, track their status, and see your progress on one
+          simple dashboard.
+        </p>
+
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Link
+            href="/register"
+            className="rounded-lg bg-indigo-500 px-6 py-3 font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:bg-indigo-400"
           >
-            <Image
-              className="dark:invert h-3.5 w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/8 px-5 transition-colors hover:border-transparent hover:bg-black/4 dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-39.5"
-            href="https://nextjs.org/docs/pages/getting-started?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Get started
+          </Link>
+          <Link
+            href="/login"
+            className="rounded-lg border border-slate-700 px-6 py-3 font-semibold text-slate-200 transition hover:bg-slate-800"
           >
-            Documentation
-          </a>
+            I already have an account
+          </Link>
+        </div>
+
+        <div className="mt-20 grid gap-6 text-left sm:grid-cols-3">
+          {features.map((f) => (
+            <div
+              key={f.title}
+              className="rounded-xl border border-slate-800 bg-slate-900 p-6 transition hover:border-indigo-500/50"
+            >
+              <h3 className="font-semibold text-white">{f.title}</h3>
+              <p className="mt-2 text-sm text-slate-400">{f.desc}</p>
+            </div>
+          ))}
         </div>
       </main>
     </div>
   );
-}
+};
+
+export default Index;
