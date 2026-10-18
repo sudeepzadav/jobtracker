@@ -18,8 +18,8 @@ const features = [
 const Index = () => {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-        <span className="text-xl font-bold text-indigo-400">JobTracker</span>
+      <nav className="mx-auto flex items-center justify-between px-6 py-10">
+        <span className="text-2xl font-bold text-indigo-400 underline">JobTracker</span>
         <div className="flex items-center gap-3">
           <Link
             href="/login"
@@ -36,7 +36,7 @@ const Index = () => {
         </div>
       </nav>
 
-      <main className="mx-auto max-w-5xl px-6 pb-20 pt-16 text-center">
+      <main className="mx-auto px-6 pb-10 pt-16 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl">
           Organize your{" "}
           <span className="bg-linear-to-r from-indigo-400 to-cyan-300 bg-clip-text text-transparent">
@@ -67,7 +67,7 @@ const Index = () => {
           {features.map((f) => (
             <div
               key={f.title}
-              className="rounded-xl border border-slate-800 bg-slate-900 p-6 transition hover:border-indigo-500/50"
+              className="rounded-xl border border-slate-800 bg-slate-900 p-6 transition hover:border-indigo-500/50 hover:scale-105 cursor-pointer"
             >
               <h3 className="font-semibold text-white">{f.title}</h3>
               <p className="mt-2 text-sm text-slate-400">{f.desc}</p>
